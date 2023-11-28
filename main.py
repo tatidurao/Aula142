@@ -43,6 +43,33 @@ def liked_movie():
     return jsonify({
         "status": "success"
     })
+@app.route("/dislike")
+def unliked_movie():
+    global all_movies
+
+    movie_data=assign_val()
+    not_liked_movies.append(movie_data)
+    print("Não Gostei", not_liked_movies)
+    all_movies.drop([0], inplace=True)
+    all_movies=all_movies.reset_index(drop=True)
+    
+    return jsonify({
+        "status": "success"
+    })
+@app.route("/did_not_watch")
+def did_not_watch_view():
+    global all_movies
+
+    movie_data=assign_val()
+    did_not_watch.append(movie_data)
+    print("Não assisti", did_not_watch)
+    all_movies.drop([0], inplace=True)
+    all_movies=all_movies.reset_index(drop=True)
+    
+    return jsonify({
+        "status": "success"
+    })
+    
 
 
 
